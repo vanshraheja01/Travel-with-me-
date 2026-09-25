@@ -258,3 +258,377 @@ font-size:18px;
 }
 
 }
+
+/* ===================================================================
+   SCROLL ANIMATIONS
+   Ported from AI Resume Analyzer (frontend/app/globals.css).
+   Toggled by the IntersectionObserver in scroll-reveal.js.
+   `--reveal-delay` is set per element from data-reveal-index.
+   =================================================================== */
+
+/* --- Scroll reveal ---------------------------------------------------- */
+.scroll-reveal {
+  --reveal-delay: 0s;
+  opacity: 0;
+  transform: translateY(32px);
+  filter: blur(4px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+  transition-delay: var(--reveal-delay);
+  will-change: opacity, transform, filter;
+}
+
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Cards/features keep their hover lift after revealing */
+.card.scroll-reveal.show,
+.feature.scroll-reveal.show{
+transition:
+  opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+  transform .4s ease,
+  filter 0.7s ease,
+  background .4s;
+}
+
+.card.scroll-reveal.show:hover{
+transform:translateY(-12px);
+}
+
+.feature.scroll-reveal.show:hover{
+transform:translateY(-10px);
+}
+
+/* --- Click / press feedback -------------------------------------------- */
+.press-feedback {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.press-feedback:active {
+  transform: scale(0.96);
+}
+
+/* --- Ambient hero glow --------------------------------------------------- */
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, -6%) scale(1.08); }
+  66% { transform: translate(-3%, 4%) scale(0.95); }
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.35;
+  animation: float-blob 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow {
+    animation: none;
+  }
+}
+
+/* --- Scroll progress bar ------------------------------------------------ */
+.scroll-progress{
+position:fixed;
+top:0;
+left:0;
+height:3px;
+width:100%;
+transform-origin:0 50%;
+transform:scaleX(0);
+background:linear-gradient(90deg,#00e0ff,#ff9800,#ff5722);
+z-index:1000;
+}
+
+/* Keep hero content above the glow blobs */
+header{
+position:relative;
+overflow:hidden;
+}
+
+.navbar,
+.hero{
+position:relative;
+z-index:1;
+}
+
+/* --- Sticky navbar once the user scrolls -------------------------------- */
+.navbar.scrolled{
+position:fixed;
+top:0;
+left:0;
+right:0;
+width:100%;
+padding:16px 5%;
+background:rgba(17,24,39,.85);
+backdrop-filter:blur(12px);
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+z-index:999;
+animation:nav-drop .4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar.scrolled .logo{
+font-size:26px;
+}
+
+@keyframes nav-drop{
+from{transform:translateY(-100%);}
+to{transform:translateY(0);}
+}
+
+.nav-links a.active::after{
+width:100%;
+}
+
+/* ===================================================================
+   ABOUT ME PAGE
+   =================================================================== */
+
+.page-header{
+height:auto;
+min-height:48vh;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1600");
+background-size:cover;
+background-position:center;
+}
+
+.about{
+position:relative;
+overflow:hidden;
+padding:90px 8%;
+}
+
+.about .glow-a{
+left:-6rem;
+top:0;
+width:24rem;
+height:24rem;
+background:#ff9800;
+}
+
+.about .glow-b{
+right:-8rem;
+top:10rem;
+width:20rem;
+height:20rem;
+background:#00e0ff;
+animation-delay:-8s;
+}
+
+.about-grid{
+position:relative;
+max-width:1150px;
+margin:auto;
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:60px;
+align-items:start;
+}
+
+.eyebrow{
+font-size:14px;
+font-weight:600;
+text-transform:uppercase;
+letter-spacing:.2em;
+color:#ff5722;
+}
+
+.about-name{
+margin-top:12px;
+font-size:64px;
+font-weight:800;
+line-height:1.1;
+background:linear-gradient(135deg,#111827,#6b7280);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+
+.about-lead{
+margin-top:24px;
+font-size:19px;
+line-height:1.8;
+color:#555;
+}
+
+.about-text p{
+line-height:1.9;
+color:#666;
+margin-top:16px;
+}
+
+.about-text h2{
+margin-top:32px;
+font-size:26px;
+font-style:italic;
+font-family:Georgia,serif;
+color:#ff5722;
+}
+
+.motto{
+margin-top:32px;
+font-family:Georgia,serif;
+font-style:italic;
+font-size:21px;
+color:#ff5722;
+}
+
+.edu-card{
+margin-top:40px;
+display:flex;
+gap:14px;
+align-items:flex-start;
+padding:18px;
+border-radius:16px;
+background:white;
+border:1px solid #e5e7eb;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.edu-icon{
+font-size:22px;
+}
+
+.edu-card strong{
+display:block;
+}
+
+.edu-card span{
+font-size:14px;
+color:#777;
+}
+
+.chip-label{
+margin:32px 0 12px;
+font-size:14px;
+font-weight:600;
+text-transform:uppercase;
+letter-spacing:.08em;
+color:#777;
+}
+
+.chips{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.chip{
+padding:6px 14px;
+border-radius:999px;
+font-size:14px;
+font-weight:500;
+background:#fff1ea;
+color:#e64a19;
+border:1px solid #ffd3c2;
+transition:.3s;
+}
+
+.chip.info{
+background:#e6fbff;
+color:#0086a3;
+border-color:#b3f2ff;
+}
+
+.chip:hover{
+transform:translateY(-3px);
+}
+
+.photo-card{
+position:sticky;
+top:100px;
+}
+
+.photo-frame{
+overflow:hidden;
+border-radius:22px;
+border:1px solid #e5e7eb;
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+background:white;
+}
+
+.photo-frame img{
+display:block;
+width:100%;
+aspect-ratio:3/4;
+object-fit:cover;
+object-position:50% 18%;
+transition:.6s;
+}
+
+.photo-frame:hover img{
+transform:scale(1.04);
+}
+
+.photo-caption{
+background:#111827;
+color:white;
+padding:16px 20px;
+}
+
+.photo-caption .caption-name{
+font-family:Georgia,serif;
+font-style:italic;
+font-size:18px;
+}
+
+.photo-caption .caption-role{
+font-size:14px;
+opacity:.7;
+}
+
+.photo-card .motto{
+text-align:center;
+font-size:17px;
+margin-top:16px;
+}
+
+@media(max-width:900px){
+
+.about-grid{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+.about-name{
+font-size:44px;
+}
+
+.photo-card{
+position:static;
+max-width:380px;
+margin:auto;
+}
+
+.navbar.scrolled{
+flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+padding:10px 5%;
+}
+
+.navbar.scrolled .nav-links{
+gap:18px;
+}
+
+}

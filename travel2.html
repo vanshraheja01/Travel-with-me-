@@ -7,44 +7,52 @@
     <link rel="stylesheet" href="travel2.css">
 </head>
 <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <header>
+
+    <div class="hero-glow" style="left:-6rem;top:4rem;width:24rem;height:24rem;background:#ff9800;" aria-hidden="true"></div>
+    <div class="hero-glow" style="right:-8rem;bottom:2rem;width:20rem;height:20rem;background:#00e0ff;animation-delay:-8s;" aria-hidden="true"></div>
 
     <nav class="navbar">
         <h2 class="logo">Incredible India</h2>
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Destinations</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="travel2.html" class="active">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
             <li><a href="#">Packages</a></li>
             <li><a href="#">Gallery</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#footer">Contact</a></li>
         </ul>
     </nav>
 
     <div class="hero">
 
-        <span class="tag">✨ Explore India Like Never Before</span>
+        <span class="tag scroll-reveal" data-reveal-index="0">✨ Explore India Like Never Before</span>
 
-        <h1>Discover India's Most Beautiful Destinations</h1>
+        <h1 class="scroll-reveal" data-reveal-index="1">Discover India's Most Beautiful Destinations</h1>
 
-        <p>
+        <p class="scroll-reveal" data-reveal-index="2">
             Experience the vibrant streets of Delhi, the royal heritage of Jaipur,
             and the breathtaking mountains of Manali.
         </p>
 
-        <a href="#" class="btn">Start Your Journey</a>
+        <div class="scroll-reveal" data-reveal-index="3">
+            <a href="#destinations" class="btn press-feedback">Start Your Journey</a>
+        </div>
 
     </div>
 
 </header>
 
-<section class="destinations">
+<section class="destinations" id="destinations">
 
-    <h2>Popular Destinations</h2>
+    <h2 class="scroll-reveal">Popular Destinations</h2>
 
     <div class="cards">
 
-        <div class="card">
+        <div class="card scroll-reveal" data-reveal-index="0">
 
             <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800" alt="Delhi">
 
@@ -61,7 +69,7 @@
 
         </div>
 
-        <div class="card">
+        <div class="card scroll-reveal" data-reveal-index="1">
 
             <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800" alt="Jaipur">
 
@@ -78,7 +86,7 @@
 
         </div>
 
-        <div class="card">
+        <div class="card scroll-reveal" data-reveal-index="2">
 
             <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800" alt="Manali">
 
@@ -101,29 +109,29 @@
 
 <section class="why-us">
 
-    <h2>Why Travel With Us?</h2>
+    <h2 class="scroll-reveal">Why Travel With Us?</h2>
 
     <div class="features">
 
-        <div class="feature">
+        <div class="feature scroll-reveal" data-reveal-index="0">
             <div class="icon">✈️</div>
             <h3>Easy Booking</h3>
             <p>Book your dream vacation in just a few clicks.</p>
         </div>
 
-        <div class="feature">
+        <div class="feature scroll-reveal" data-reveal-index="1">
             <div class="icon">🏨</div>
             <h3>Luxury Hotels</h3>
             <p>Stay at premium hotels with the best amenities.</p>
         </div>
 
-        <div class="feature">
+        <div class="feature scroll-reveal" data-reveal-index="2">
             <div class="icon">🛡️</div>
             <h3>Safe Travel</h3>
             <p>Trusted guides and secure travel experiences.</p>
         </div>
 
-        <div class="feature">
+        <div class="feature scroll-reveal" data-reveal-index="3">
             <div class="icon">💰</div>
             <h3>Best Prices</h3>
             <p>Affordable packages with no hidden charges.</p>
@@ -133,15 +141,16 @@
 
 </section>
 
-<footer>
+<footer id="footer">
 
-    <h2>Incredible India</h2>
+    <h2 class="scroll-reveal">Incredible India</h2>
 
-    <p>Explore. Discover. Experience.</p>
+    <p class="scroll-reveal" data-reveal-index="1">Explore. Discover. Experience.</p>
 
-    <p>© 2026 Incredible India | Designed with HTML & CSS</p>
+    <p class="scroll-reveal" data-reveal-index="2">© 2026 Incredible India | Designed with HTML & CSS</p>
 
 </footer>
-    
+
+    <script src="scroll-reveal.js"></script>
 </body>
 </html>
